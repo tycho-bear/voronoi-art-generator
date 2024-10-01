@@ -91,17 +91,16 @@ end
 
 ###### Header 6
 
+[//]: # (https://github.com/pages-themes/cayman/issues/82)
+[//]: # (that actually wasn't the issue, but I removed the lines between the)
+
+[//]: # (table rows and it fixed the problem)
 
 | head1        | head two          | three |
-
 |:-------------|:------------------|:------|
-
 | ok           | good swedish fish | nice  |
-
 | out of stock | good and plenty   | nice  |
-
 | ok           | good `oreos`      | hmm   |
-
 | ok           | good `zoute` drop | yumm  |
 
 

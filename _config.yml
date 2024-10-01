@@ -1,6 +1,10 @@
-title: Cayman theme
-description: Cayman is a clean, responsive theme for GitHub Pages.
+title: Voronoi Art Generator
+description: An interactive Voronoi art generator
 show_downloads: true
 #show_downloads: false
-google_analytics:
+#google_analytics:
 theme: jekyll-theme-cayman
+
+# to toggle showing the github link:
+#github:
+#  is_project_page: false
