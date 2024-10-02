@@ -2,214 +2,311 @@
 layout: default
 ---
 
-testing page stuff
+# Description
 
-write stuff here, and it will automatically refresh!
+This application will provide a way for users to apply Voronoi diagrams in an artistic manner. Users will click on the canvas to create points, and this will cause edges to appear and partition the plane into different regions. I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.
 
-`bundle exec jekyll serve --baseurl=""`
 
----
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+# References
 
+* [Voronoi diagrams](https://en.wikipedia.org/wiki/Voronoi_diagram)
+* [Standard Voronoi diagram generator](https://alexbeutel.com/webgl/voronoi.html)
+* [Overlaying the diagram on top of an image](https://cfbrasz.github.io/Voronoi.html)
+* [WebGL docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
 
-[Link to another page](./another-page.html).
 
+[//]: # (---)
 
-There should be whitespace between paragraphs.
 
+##### Project by Tycho Bear. Some website files sourced from the [Cayman](https://pages-themes.github.io/cayman/) theme.
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
 
-# Header 1
 
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
 
-## Header 2
 
+[//]: # (---)
 
-> This is a blockquote following a header.
+[//]: # (Text can be **bold**, _italic_, or ~~strikethrough~~.)
 
->
+[//]: # ()
+[//]: # ()
+[//]: # ([Link to another page]&#40;./another-page.html&#41;.)
 
-> When something is important enough, you do it even if the odds are not in your favor.
+[//]: # ()
+[//]: # ()
+[//]: # (There should be whitespace between paragraphs.)
 
+[//]: # ()
+[//]: # ()
+[//]: # (There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.)
 
-### Header 3
+[//]: # ()
+[//]: # ()
+[//]: # (# Header 1)
 
+[//]: # ()
+[//]: # ()
+[//]: # (This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.)
 
-```js
+[//]: # ()
+[//]: # ()
+[//]: # (## Header 2)
 
-// Javascript code with syntax highlighting.
+[//]: # ()
+[//]: # ()
+[//]: # (> This is a blockquote following a header.)
 
-var fun = function lang(l) {
+[//]: # ()
+[//]: # (>)
 
-  dateformat.i18n = require('./lang/' + l)
+[//]: # ()
+[//]: # (> When something is important enough, you do it even if the odds are not in your favor.)
 
-  return true;
+[//]: # ()
+[//]: # ()
+[//]: # (### Header 3)
 
-}
+[//]: # ()
+[//]: # ()
+[//]: # (```js)
 
-```
+[//]: # ()
+[//]: # (// Javascript code with syntax highlighting.)
 
+[//]: # ()
+[//]: # (var fun = function lang&#40;l&#41; {)
 
-```ruby
+[//]: # ()
+[//]: # (  dateformat.i18n = require&#40;'./lang/' + l&#41;)
 
-# Ruby code with syntax highlighting
+[//]: # ()
+[//]: # (  return true;)
 
-GitHubPages::Dependencies.gems.each do |gem, version|
+[//]: # ()
+[//]: # (})
 
-  s.add_dependency(gem, "= #{version}")
+[//]: # ()
+[//]: # (```)
 
-end
+[//]: # ()
+[//]: # ()
+[//]: # (```ruby)
 
-```
+[//]: # ()
+[//]: # (# Ruby code with syntax highlighting)
 
+[//]: # ()
 
-#### Header 4
 
+[//]: # ()
+[//]: # (end)
 
-*   This is an unordered list following a header.
+[//]: # ()
+[//]: # (```)
 
-*   This is an unordered list following a header.
+[//]: # ()
+[//]: # ()
+[//]: # (#### Header 4)
 
-*   This is an unordered list following a header.
+[//]: # ()
+[//]: # ()
+[//]: # (*   This is an unordered list following a header.)
 
+[//]: # ()
+[//]: # (*   This is an unordered list following a header.)
 
-##### Header 5
+[//]: # ()
+[//]: # (*   This is an unordered list following a header.)
 
+[//]: # ()
+[//]: # ()
+[//]: # (##### Header 5)
 
-1.  This is an ordered list following a header.
+[//]: # ()
+[//]: # ()
+[//]: # (1.  This is an ordered list following a header.)
 
-2.  This is an ordered list following a header.
+[//]: # ()
+[//]: # (2.  This is an ordered list following a header.)
 
-3.  This is an ordered list following a header.
+[//]: # ()
+[//]: # (3.  This is an ordered list following a header.)
 
+[//]: # ()
+[//]: # ()
+[//]: # (###### Header 6)
 
-###### Header 6
+[//]: # ()
+[//]: # ([//]: # &#40;https://github.com/pages-themes/cayman/issues/82&#41;)
+[//]: # ([//]: # &#40;that actually wasn't the issue, but I removed the lines between the&#41;)
+[//]: # ()
+[//]: # ([//]: # &#40;table rows and it fixed the problem&#41;)
+[//]: # ()
+[//]: # (| head1        | head two          | three |)
+[//]: # (|:-------------|:------------------|:------|)
+[//]: # (| ok           | good swedish fish | nice  |)
+[//]: # (| out of stock | good and plenty   | nice  |)
+[//]: # (| ok           | good `oreos`      | hmm   |)
+[//]: # (| ok           | good `zoute` drop | yumm  |)
 
-[//]: # (https://github.com/pages-themes/cayman/issues/82)
-[//]: # (that actually wasn't the issue, but I removed the lines between the)
+[//]: # ()
+[//]: # ()
+[//]: # (### There's a horizontal rule below this.)
 
-[//]: # (table rows and it fixed the problem)
+[//]: # ()
+[//]: # ()
+[//]: # (* * *)
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+[//]: # ()
+[//]: # ()
+[//]: # (### Here is an unordered list:)
 
+[//]: # ()
+[//]: # ()
+[//]: # (*   Item foo)
 
-### There's a horizontal rule below this.
+[//]: # ()
+[//]: # (*   Item bar)
 
+[//]: # ()
+[//]: # (*   Item baz)
 
-* * *
+[//]: # ()
+[//]: # (*   Item zip)
 
+[//]: # ()
+[//]: # ()
+[//]: # (### And an ordered list:)
 
-### Here is an unordered list:
+[//]: # ()
+[//]: # ()
+[//]: # (1.  Item one)
 
+[//]: # ()
+[//]: # (1.  Item two)
 
-*   Item foo
+[//]: # ()
+[//]: # (1.  Item three)
 
-*   Item bar
+[//]: # ()
+[//]: # (1.  Item four)
 
-*   Item baz
+[//]: # ()
+[//]: # ()
+[//]: # (### And a nested list:)
 
-*   Item zip
+[//]: # ()
+[//]: # ()
+[//]: # (- level 1 item)
 
+[//]: # ()
+[//]: # (  - level 2 item)
 
-### And an ordered list:
+[//]: # ()
+[//]: # (  - level 2 item)
 
+[//]: # ()
+[//]: # (    - level 3 item)
 
-1.  Item one
+[//]: # ()
+[//]: # (    - level 3 item)
 
-1.  Item two
+[//]: # ()
+[//]: # (- level 1 item)
 
-1.  Item three
+[//]: # ()
+[//]: # (  - level 2 item)
 
-1.  Item four
+[//]: # ()
+[//]: # (  - level 2 item)
 
+[//]: # ()
+[//]: # (  - level 2 item)
 
-### And a nested list:
+[//]: # ()
+[//]: # (- level 1 item)
 
+[//]: # ()
+[//]: # (  - level 2 item)
 
-- level 1 item
+[//]: # ()
+[//]: # (  - level 2 item)
 
-  - level 2 item
+[//]: # ()
+[//]: # (- level 1 item)
 
-  - level 2 item
+[//]: # ()
+[//]: # ()
+[//]: # (### Small image)
 
-    - level 3 item
+[//]: # ()
+[//]: # ()
+[//]: # (![Octocat]&#40;https://github.githubassets.com/images/icons/emoji/octocat.png&#41;)
 
-    - level 3 item
+[//]: # ()
+[//]: # ()
+[//]: # (### Large image)
 
-- level 1 item
+[//]: # ()
+[//]: # ()
+[//]: # (![Branching]&#40;https://guides.github.com/activities/hello-world/branching.png&#41;)
 
-  - level 2 item
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # (### Definition lists can be used with HTML syntax.)
 
-  - level 2 item
+[//]: # ()
+[//]: # ()
+[//]: # (<dl>)
 
-  - level 2 item
+[//]: # ()
+[//]: # (<dt>Name</dt>)
 
-- level 1 item
+[//]: # ()
+[//]: # (<dd>Godzilla</dd>)
 
-  - level 2 item
+[//]: # ()
+[//]: # (<dt>Born</dt>)
 
-  - level 2 item
+[//]: # ()
+[//]: # (<dd>1952</dd>)
 
-- level 1 item
+[//]: # ()
+[//]: # (<dt>Birthplace</dt>)
 
+[//]: # ()
+[//]: # (<dd>Japan</dd>)
 
-### Small image
+[//]: # ()
+[//]: # (<dt>Color</dt>)
 
+[//]: # ()
+[//]: # (<dd>Green</dd>)
 
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
+[//]: # ()
+[//]: # (</dl>)
 
+[//]: # ()
+[//]: # ()
+[//]: # (```)
 
-### Large image
+[//]: # ()
+[//]: # (Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.)
 
+[//]: # ()
+[//]: # (```)
 
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
+[//]: # ()
+[//]: # ()
+[//]: # (```)
 
+[//]: # ()
+[//]: # (The final element.)
 
-
-### Definition lists can be used with HTML syntax.
-
-
-<dl>
-
-<dt>Name</dt>
-
-<dd>Godzilla</dd>
-
-<dt>Born</dt>
-
-<dd>1952</dd>
-
-<dt>Birthplace</dt>
-
-<dd>Japan</dd>
-
-<dt>Color</dt>
-
-<dd>Green</dd>
-
-</dl>
-
-
-```
-
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-
-```
-
-
-```
-
-The final element.
-
-```
+[//]: # ()
+[//]: # (```)
