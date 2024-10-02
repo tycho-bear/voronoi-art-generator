@@ -8,3 +8,8 @@ theme: jekyll-theme-cayman
 # to toggle showing the github link:
 #github:
 #  is_project_page: false
+
+
+
+#github:
+#  is_project_page: true

@@ -1,5 +1,6 @@
 ---
 layout: default
+title: test title in index.md
 ---
 
 # Description of Project
