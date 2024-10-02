@@ -3,9 +3,9 @@ layout: default
 title: Voronoi Art Generator
 ---
 
-# Description of Project
+# Description
 
-This application will provide a way for users to apply Voronoi diagrams in an artistic manner. Users will click on the canvas to create points, and this will cause edges to appear and partition the plane into different regions. I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.
+This application will provide a way for users to apply Voronoi diagrams in an artistic manner. Users will be able to click on the canvas to create points, and this will cause edges to appear and partition the plane into different regions. I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.
 
 
 
@@ -20,7 +20,7 @@ This application will provide a way for users to apply Voronoi diagrams in an ar
 [//]: # (---)
 
 
-##### Project by Tycho Bear. Some website files sourced from the [Cayman](https://pages-themes.github.io/cayman/) theme.
+##### Project by Tycho Bear. Some website files sourced from the [Cayman](https://github.com/pages-themes/cayman) theme.
 
 
 
