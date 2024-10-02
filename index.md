@@ -1,6 +1,6 @@
 ---
 layout: default
-title: test title in index.md
+title: Voronoi Art Generator
 ---
 
 # Description of Project
