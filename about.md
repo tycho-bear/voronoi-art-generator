@@ -1,39 +1,29 @@
 ---
-layout: voronoi
-title: Voronoi Art Generator
+layout: about
+title: about title here
+description: Description, _____, and _____. blah blah blah
 ---
 
-
-# Vertically squish the header a little bit
-
-# Diagram creator here
-
-### a
-
-### b
-
-### c
-
-
-
-[//]: # (# Description)
+[//]: # (## blah blah)
 
 [//]: # ()
-[//]: # (This application will provide a way for users to apply Voronoi diagrams in an artistic manner. Users will be able to click on the canvas to create points, and this will cause edges to appear and partition the plane into different regions. I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.)
+[//]: # (_yay_)
 
 [//]: # ()
-[//]: # ()
-[//]: # ()
-[//]: # (# References)
+[//]: # ([back]&#40;./&#41;)
 
-[//]: # ()
-[//]: # (* [Voronoi diagrams]&#40;https://en.wikipedia.org/wiki/Voronoi_diagram&#41;)
+# Description
 
-[//]: # (* [Standard Voronoi diagram generator]&#40;https://alexbeutel.com/webgl/voronoi.html&#41;)
+This application will provide a way for users to apply Voronoi diagrams in an artistic manner. Users will be able to click on the canvas to create points, and this will cause edges to appear and partition the plane into different regions. I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.
 
-[//]: # (* [Overlaying the diagram on top of an image]&#40;https://cfbrasz.github.io/Voronoi.html&#41;)
 
-[//]: # (* [WebGL docs]&#40;https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API&#41;)
+
+# References
+
+* [Voronoi diagrams](https://en.wikipedia.org/wiki/Voronoi_diagram)
+* [Standard Voronoi diagram generator](https://alexbeutel.com/webgl/voronoi.html)
+* [Overlaying the diagram on top of an image](https://cfbrasz.github.io/Voronoi.html)
+* [WebGL docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
 
 
 [//]: # (---)
@@ -54,7 +44,7 @@ title: Voronoi Art Generator
 
 
 
-[//]: # ([Link to another page]&#40;./about&#41;.)
+[Link to another page](./about.html).
 
 [//]: # ()
 [//]: # ()
@@ -330,3 +320,4 @@ title: Voronoi Art Generator
 
 [//]: # ()
 [//]: # (```)
+
