@@ -17,6 +17,13 @@ const height = 600;
 const numStartingPoints = 30
 
 /**
+ * Maps the index of each cell to its color. This is used when points are added
+ * to the diagram.
+ * @type {Map<any, any>}
+ */
+const cellColors = new Map();
+
+/**
  * Flag that determines whether the points in the Voronoi diagram should be
  * visible. This is read at page load, and updated when the checkbox is clicked.
  * @type {boolean}
@@ -57,13 +64,6 @@ function generateRandomPoints(num_points) {
 const points = generateRandomPoints(numStartingPoints)
 
 /**
- * Maps the index of each cell to its color. This is used when points are added
- * to the diagram.
- * @type {Map<any, any>}
- */
-const cellColors = new Map();
-
-/**
  * Generates a random RGB color. Floor is used so the values are in the range
  * [0, 255].
  * @returns {string} the color as a string in the form `rgb(r, g, b)`. This is
@@ -73,7 +73,7 @@ function randomRGBColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`; // Format as rgb(r, g, b)
+    return `rgb(${r}, ${g}, ${b})`; // this is "rgb(r, g, b)"
 }
 
 /**
@@ -89,31 +89,23 @@ function drawPoints(visible) {
         // set circle positions
         .attr("cx", d => d[0])
         .attr("cy", d => d[1])
-        // set radius to 0 to make them invisible. this can look nice when overlaid
-        // over images.
-        .attr("r", 4)  // radius of 4 (shows the points)
+        .attr("r", 4)
         .attr("fill", "black")
         // control visibility
-        // .style("opacity", visible ? 1 : 0);
-        // .style("visibility", visible ? "visible" : "hidden");
-        .style("display", visible ? "block" : "none");
-        // .style.display="none";
-
+        .style("visibility", visible ? "visible" : "hidden");
+        // .style("display", visible ? "block" : "none");
 }
 
-// Function to toggle point visibility based on checkbox state
+/**
+ * Toggles the visibility of points on the diagram. It uses the pointsVisible
+ * flag, which is initially set to true.
+ *
+ * This function is called whenever the "toggle-points" checkbox is updated.
+ */
 function togglePoints() {
-    // const showPoints = document.getElementById("toggle-points").checked; // Check the checkbox state
-    // drawPoints(showPoints); // Pass the state to drawPoints
     pointsVisible = !pointsVisible;
     drawPoints(pointsVisible);
 }
-
-// // Checkbox event listener
-// d3.select("#toggle-points").on("change", function () {
-//     const showPoints = this.checked; // Check if checkbox is checked
-//     drawPoints(showPoints); // Update point visibility
-// });
 
 /**
  * This function takes an array of points as input and draws the corresponding
@@ -147,8 +139,6 @@ function drawVoronoi(points) {
         // .attr("stroke", "#5b4469");
 
     // draw the points here
-    // set radius to 0 to make them invisible. this can look nice when overlaid
-    // over images.
     // drawPoints(true)
     drawPoints(pointsVisible)
 }
@@ -171,10 +161,6 @@ function addPointOnClick(event) {
 function main() {
     // draw the initial diagram with random points
     drawVoronoi(points);
-
-    // // draw the diagram based on the checkbox state
-    // const showPoints = document.getElementById("toggle-points").checked; // Check the checkbox state
-    // drawPoints(showPoints)
 }
 
 main();
