@@ -9,7 +9,11 @@ theme: jekyll-theme-cayman
 #github:
 #  is_project_page: false
 
+#website: https://tycho-bear.github.io/voronoi
 
+#site.url: https://tycho-bear.github.io/voronoi
+
+baseurl: /voronoi
 
 github:
   is_project_page: true
