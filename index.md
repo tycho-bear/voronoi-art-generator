@@ -6,7 +6,7 @@ title: Voronoi Art Generator
 
 ## How do I use this?
 
-Simply click on the diagram to add points to it!
+Simply click on the diagram to add points to it! To toggle point visibility, use the "Show points" checkbox.
 
 
 
