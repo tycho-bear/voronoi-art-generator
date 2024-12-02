@@ -17,6 +17,16 @@ const height = 600;
 const numStartingPoints = 30
 
 /**
+ * Flag that determines whether the points in the Voronoi diagram should be
+ * visible. This is read at page load, and updated when the checkbox is clicked.
+ * @type {boolean}
+ */
+let pointsVisible = true;
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+/**
  * Give the SVG element the correct dimensions and make it update on click
  */
 const svg = d3.select("#voronoi-diagram")
@@ -67,6 +77,45 @@ function randomRGBColor() {
 }
 
 /**
+ * Draws the points on the diagram.
+ * @param visible boolean flag that controls point visibility (true = visible,
+ * false = invisible).
+ */
+function drawPoints(visible) {
+    svg.selectAll("circle")
+        .data(points)
+        .join("circle")
+        .attr("class", "point")
+        // set circle positions
+        .attr("cx", d => d[0])
+        .attr("cy", d => d[1])
+        // set radius to 0 to make them invisible. this can look nice when overlaid
+        // over images.
+        .attr("r", 4)  // radius of 4 (shows the points)
+        .attr("fill", "black")
+        // control visibility
+        // .style("opacity", visible ? 1 : 0);
+        // .style("visibility", visible ? "visible" : "hidden");
+        .style("display", visible ? "block" : "none");
+        // .style.display="none";
+
+}
+
+// Function to toggle point visibility based on checkbox state
+function togglePoints() {
+    // const showPoints = document.getElementById("toggle-points").checked; // Check the checkbox state
+    // drawPoints(showPoints); // Pass the state to drawPoints
+    pointsVisible = !pointsVisible;
+    drawPoints(pointsVisible);
+}
+
+// // Checkbox event listener
+// d3.select("#toggle-points").on("change", function () {
+//     const showPoints = this.checked; // Check if checkbox is checked
+//     drawPoints(showPoints); // Update point visibility
+// });
+
+/**
  * This function takes an array of points as input and draws the corresponding
  * Voronoi diagram.
  * @param points the array of points. Each point is in the form `[x, y]`.
@@ -93,28 +142,15 @@ function drawVoronoi(points) {
         .attr("d", (_, i) => voronoi.renderCell(i))
         .attr("stroke", "#000")
         .attr("fill", (_, i) => cellColors.get(i)) // Use persistent color
+        // increase line thickness
+        .attr("stroke-width", 2)
         // .attr("stroke", "#5b4469");
 
     // draw the points here
     // set radius to 0 to make them invisible. this can look nice when overlaid
     // over images.
-    drawPoints(0)
-}
-
-function drawPoints(radius) {
-    // draw the points here
-    // set radius to 0 to make them invisible. this can look nice when overlaid
-    // over images.
-    svg.selectAll("circle")
-        .data(points)
-        .join("circle")
-        .attr("class", "point")
-        // set circle positions and radii
-        .attr("cx", d => d[0])
-        .attr("cy", d => d[1])
-        .attr("r", radius)  // radius of 4 (shows the points)
-        // .attr("r", 0)  // radius of 0 (hides the points)
-        .attr("fill", "black");
+    // drawPoints(true)
+    drawPoints(pointsVisible)
 }
 
 /**
@@ -135,6 +171,10 @@ function addPointOnClick(event) {
 function main() {
     // draw the initial diagram with random points
     drawVoronoi(points);
+
+    // // draw the diagram based on the checkbox state
+    // const showPoints = document.getElementById("toggle-points").checked; // Check the checkbox state
+    // drawPoints(showPoints)
 }
 
 main();
