@@ -14,11 +14,11 @@ description: What's the goal? How does this stuff work?
 
 # Description
 
-This application provides a way for users to apply Voronoi diagrams in an artistic manner. Users can click on the canvas to create points, and this causes edges to appear and partition the plane into different regions.
+This application provides a way for users to apply Voronoi diagrams in an artistic manner. Users can click on the canvas to create points, and this causes edges to appear and partition the plane into different regions. Users can also click a checkbox to toggle the visibility of the points in the diagram.
 
 ## Features coming soon:
 
-* Point visibility toggle
+* ~~Point visibility toggle~~ (done!)
 * Image overlay option
 * Color averaging per cell
 
