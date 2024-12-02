@@ -12,15 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- testing d3 delete this -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
-
-    <!-- doesn't work -->
-<!--<script src="https://d3js.org/d3-delaunay.v7.min.js"></script>-->
-
-
-
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
   </head>
@@ -34,8 +26,6 @@
 <!--        link to the about page-->
         <a href="{{ site.url }}/about" class="btn">About this project</a>
 
-
-
 <!--      <a href="{{ site.github.repository_url }}" class="btn">Try it here!</a>-->
 <!--      {% if site.github.is_project_page %}-->
 <!--      <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>-->
@@ -48,36 +38,11 @@
 
     <main id="content" class="main-content" role="main">
 
-<!--      <div id="canvas">-->
-<!--        blah blah js stuff here-->
-
-<!--      </div>-->
-
-      <!-- more d3 with my new code -->
-<!--      <script src="https://d3js.org/d3-delaunay.v7.min.js"></script>-->
-
-      <!-- basic canvas stuff -->
-<!--      <canvas id="canvas" width="600" height="400"-->
-<!--              style="border:1px solid black; display:block; margin:auto"></canvas>-->
-<!--      &lt;!&ndash; put javascript stuff here above the content &ndash;&gt;-->
-<!--      <script type="module" src="../javascript/main.js"></script>-->
-
-      <!-- test d3 stuff here -->
+      <!-- include the voronoi diagram -->
       <svg id="voronoi-diagram" width="800" height="600"></svg>
-      <script src="../javascript/test-stuff.js"></script>
-
-<!--      <canvas id="canvas" width="600" height="400"-->
-<!--        style="border:1px solid black; display:block; margin:auto"></canvas>-->
-<!--      <script type="module" src="../javascript/main.js"></script>-->
-
-
-      <!-- trying again -->
-<!--      <div id="container"></div>  &lt;!&ndash; Container for SVG &ndash;&gt;-->
-<!--      <script src="../javascript/voronoi.js"></script>  &lt;!&ndash; Custom JS file &ndash;&gt;-->
-
+      <script src="../javascript/voronoi.js"></script>
 
       {{ content }}
-
 
       <footer class="site-footer">
         {% if site.github.is_project_page %}
