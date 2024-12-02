@@ -98,6 +98,13 @@ function drawVoronoi(points) {
     // draw the points here
     // set radius to 0 to make them invisible. this can look nice when overlaid
     // over images.
+    drawPoints(0)
+}
+
+function drawPoints(radius) {
+    // draw the points here
+    // set radius to 0 to make them invisible. this can look nice when overlaid
+    // over images.
     svg.selectAll("circle")
         .data(points)
         .join("circle")
@@ -105,7 +112,7 @@ function drawVoronoi(points) {
         // set circle positions and radii
         .attr("cx", d => d[0])
         .attr("cy", d => d[1])
-        .attr("r", 4)  // radius of 4 (shows the points)
+        .attr("r", radius)  // radius of 4 (shows the points)
         // .attr("r", 0)  // radius of 0 (hides the points)
         .attr("fill", "black");
 }
