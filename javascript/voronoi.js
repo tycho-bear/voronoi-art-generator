@@ -14,7 +14,7 @@ const height = 600;
  * The number of points to generate when the page is loaded.
  * @type {number}
  */
-const num_points = 40
+const numStartingPoints = 30
 
 /**
  * Give the SVG element the correct dimensions and make it update on click
@@ -44,7 +44,7 @@ function generateRandomPoints(num_points) {
  * Stores the points for the diagram.
  * @type {*[]}
  */
-const points = generateRandomPoints(num_points)
+const points = generateRandomPoints(numStartingPoints)
 
 /**
  * Maps the index of each cell to its color. This is used when points are added
