@@ -13,7 +13,12 @@ theme: jekyll-theme-cayman
 
 #site.url: https://tycho-bear.github.io/voronoi
 
+# bundle exec jekyll serve --baseurl=""
+# serve with an empty string for the baseurl
+# this means that if I use the baseurl in links, everything still works locally,
+  # and the github pages deployment should actually be able to use the javascript!
 baseurl: /voronoi
 
 github:
   is_project_page: true
+#  is_project_page: false
