@@ -19,10 +19,23 @@ const svg = d3.select("#voronoi-diagram")
 // generate some random points
 // const points = d3.range(70).map(() => [Math.random() * width, Math.random() * height]);
 const points = [];
-for (let i = 0; i < 20; i++) {
+// for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 40; i++) {
     const x = Math.random() * width;
     const y = Math.random() * height;
     points.push([x, y]);
+}
+
+// Initialize a color map for persistent cell colors
+const cellColors = new Map();
+
+// Function to generate a random color
+// Generate a random RGB color
+function randomRGBColor() {
+    const r = Math.floor(Math.random() * 256); // Random value for red (0-255)
+    const g = Math.floor(Math.random() * 256); // Random value for green (0-255)
+    const b = Math.floor(Math.random() * 256); // Random value for blue (0-255)
+    return `rgb(${r}, ${g}, ${b})`; // Format as rgb(r, g, b)
 }
 
 
@@ -34,6 +47,13 @@ function drawVoronoi(points) {
     // Generate the Voronoi diagram
     const voronoi = delaunay.voronoi([0, 0, width, height]);
 
+    // Assign colors to new points
+    points.forEach((point, i) => {
+        if (!cellColors.has(i)) {
+            cellColors.set(i, randomRGBColor()); // Assign a random color if not already assigned
+        }
+    });
+
     // Draw Voronoi cells
     // Selects all path elements in the SVG, binds the points data to them,
     // and creates new path elements if necessary.
@@ -44,7 +64,8 @@ function drawVoronoi(points) {
         .join("path")
         .attr("class", "voronoi-cell")
         .attr("d", (_, i) => voronoi.renderCell(i))
-        .attr("stroke", "#ccc");
+        .attr("stroke", "#000")
+        .attr("fill", (_, i) => cellColors.get(i)) // Use persistent color
         // .attr("stroke", "#5b4469");
 
     // Draw points
@@ -62,8 +83,9 @@ function drawVoronoi(points) {
         // set circle positions and radii
         .attr("cx", d => d[0])
         .attr("cy", d => d[1])
-        // .attr("r", 5);
-        .attr("r", 0);
+        .attr("r", 4)  // radius of 4 (shows the points)
+        // .attr("r", 0)  // radius of 0 (hides the points)
+        .attr("fill", "black");
 }
 
 // Function to handle clicks and add new points
