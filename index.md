@@ -4,15 +4,11 @@ title: Voronoi Art Generator
 ---
 
 
-# Vertically squish the header a little bit
+## How do I use this?
 
-# Diagram creator here
+Simply click on the diagram to add points to it!
 
-### a
 
-### b
-
-### c
 
 
 

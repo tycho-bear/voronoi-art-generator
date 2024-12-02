@@ -1,7 +1,7 @@
 ---
 layout: about
-title: about title here
-description: Description, _____, and _____. blah blah blah
+title: About This Project
+description: What's the goal? How does this stuff work?
 ---
 
 [//]: # (## blah blah)
@@ -14,7 +14,20 @@ description: Description, _____, and _____. blah blah blah
 
 # Description
 
-This application will provide a way for users to apply Voronoi diagrams in an artistic manner. Users will be able to click on the canvas to create points, and this will cause edges to appear and partition the plane into different regions. I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.
+This application provides a way for users to apply Voronoi diagrams in an artistic manner. Users can click on the canvas to create points, and this causes edges to appear and partition the plane into different regions.
+
+## Features coming soon:
+
+* Point visibility toggle
+* Image overlay option
+* Color averaging per cell
+
+## Stretch goals:
+
+* Random point movement
+
+[//]: # (I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.)
+
 
 
 
@@ -44,7 +57,7 @@ This application will provide a way for users to apply Voronoi diagrams in an ar
 
 
 
-[Link to another page](./about.html).
+[//]: # ([Link to another page]&#40;./about.html&#41;.)
 
 [//]: # ()
 [//]: # ()
