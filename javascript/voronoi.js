@@ -14,8 +14,8 @@ const height = 600;
  * The number of points to generate when the page is loaded.
  * @type {number}
  */
-const numStartingPoints = 30
-// const numStartingPoints = 500
+// const numStartingPoints = 30
+const numStartingPoints = 500
 
 /**
  * Maps the index of each cell to its color. This is used when points are added
@@ -177,7 +177,6 @@ function addPointOnClick(event) {
     points.push([x, y]);
     drawVoronoi(points);  // redraw
 
-    // todo stained glass effect global variable check here
     if (stainedGlassEffect) {
         applyStainedGlassEffect();
     }
@@ -232,7 +231,7 @@ function overlayImage() {
 
 
 // TODO documentation
-// TODO put svgWidth and svgHeight in global scope
+// TODO put svgWidth and svgHeight in global scope?
 function applyStainedGlassEffect() {
     const canvas = document.getElementById("image-canvas");
     const context = canvas.getContext("2d");
@@ -244,10 +243,10 @@ function applyStainedGlassEffect() {
     }
 
     // Get SVG dimensions
-    const svgWidth = +svg.attr("width");
-    const svgHeight = +svg.attr("height");
+    const svgWidth = Math.round(+svg.attr("width"));
+    const svgHeight = Math.round(+svg.attr("height"));
 
-    // Set canvas dimensions to match SVG
+    // Set canvas dimensions to match SVG (as integers)
     canvas.width = svgWidth;
     canvas.height = svgHeight;
 
@@ -283,15 +282,28 @@ function applyStainedGlassEffect() {
                 }
             }
 
-            // Avoid division by zero
+            // Avoid division by zero (cells with no pixels)
             if (count === 0) return "rgba(0, 0, 0, 0)";
+
+            // DEBUG
+            let rgbNumbersBeforeRounding = `rgb(${r}, ${g}, ${b})`;
+            console.log("before rounding: " + rgbNumbersBeforeRounding);  // NaN
 
             // Compute average color
             r = Math.round(r / count);
             g = Math.round(g / count);
             b = Math.round(b / count);
+            // r = 33;
+            // g = 66;
+            // b = 99;
 
-            return `rgb(${r}, ${g}, ${b})`;
+            // let rgbNumbers = `rgb(${r}, ${g}, ${b})`;
+            let rgbNumbers = `rgb(${r}, ${g}, ${b})`;  // NaN
+
+            // print the rgb value to the console
+            console.log(rgbNumbers);
+
+            return rgbNumbers;
         });
 }
 
