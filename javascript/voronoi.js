@@ -33,7 +33,8 @@ const cellColors = new Map();
 let pointsVisible = false;
 
 /**
- * TODO
+ * Flag that indicates whether an image has been uploaded. This is used to
+ * determine whether the Voronoi cells should be transparent.
  * @type {boolean}
  */
 let imageUploaded = false;
@@ -104,22 +105,6 @@ function drawPoints(visible) {
         // .style("display", visible ? "block" : "none");
 }
 
-// function drawCells(transparent) {
-//     // draw the cells and the lines between them
-//     // use the fill color from earlier, and set the line color to black
-//     svg.selectAll("path")
-//         .data(points)
-//         .join("path")
-//         .attr("class", "voronoi-cell")
-//         .attr("d", (_, i) => voronoi.renderCell(i))
-//         .attr("stroke", "#000")
-//         // .attr("fill", (_, i) => cellColors.get(i)) // Use persistent color
-//         .attr("fill", (_, i) => transparent ? "none" : cellColors.get(i))
-//         // .attr("fill", (_, i) => "none")
-//         // increase line thickness
-//         .attr("stroke-width", 2)
-// }
-
 /**
  * Toggles the visibility of points on the diagram. It uses the pointsVisible
  * flag, which is initially set to true.
@@ -137,8 +122,7 @@ function togglePoints() {
  * @param points the array of points. Each point is in the form `[x, y]`.
  */
 function drawVoronoi(points) {
-
-    // todo documentation
+    // need to draw the diagram with the correct dimensions
     const svgWidth = +svg.attr("width");
     const svgHeight = +svg.attr("height");
 
@@ -170,7 +154,6 @@ function drawVoronoi(points) {
         // increase line thickness
         .attr("stroke-width", 2)
         // .attr("stroke", "#5b4469");
-    // drawCells(imageUploaded)
 
     // draw the points here
     // drawPoints(true)
@@ -189,51 +172,10 @@ function addPointOnClick(event) {
     drawVoronoi(points);  // redraw
 }
 
-
-// TODO
-
-// // Function to overlay the uploaded image and make Voronoi cells transparent
-// function overlayImage() {
-//     imageUploaded = true
-//     const fileInput = document.getElementById("upload-image");
-//     const file = fileInput.files[0];
-//
-//     if (file) {
-//         const reader = new FileReader();
-//
-//         // When the file is loaded, set it as the background image
-//         reader.onload = function (event) {
-//             const imageURL = event.target.result;
-//
-//             // Add the image to the background
-//             svg.selectAll("image").remove(); // Clear any existing image
-//             svg.append("image")
-//                 .attr("xlink:href", imageURL)
-//                 .attr("x", 0)
-//                 .attr("y", 0)
-//                 .attr("width", width)
-//                 .attr("height", height)
-//                 // todo: just doing this works:
-//                 .attr("style", "pointer-events: none;") // Make image non-interactive
-//                 .lower(); // Ensure the image is behind the cells
-//
-//             // Update Voronoi cells to have transparent fill
-//             svg.selectAll(".voronoi-cell")
-//                 // .attr("fill", (_, i) => cellColors.get(i)) // Retain cell colors
-//                 // .attr("fill-opacity", 0); // Make cells transparent
-//                 .attr("fill", "none"); // Transparent cells
-//         };
-//
-//         // Read the file as a data URL
-//         reader.readAsDataURL(file);
-//     } else {
-//         console.error("No file selected");
-//     }
-// }
-
-
-// todo: this one resizes the diagram
-
+/**
+ * This function is called when the user uploads an image. It puts the image
+ * underneath the diagram and makes the cells transparent.
+ */
 function overlayImage() {
     imageUploaded = true;
     const fileInput = document.getElementById("upload-image");
@@ -245,30 +187,28 @@ function overlayImage() {
         reader.onload = function (event) {
             const imageURL = event.target.result;
 
-            // Create an Image object to get dimensions
+            // so we can get dimensions for when we resize the diagram
             const img = new Image();
             img.src = imageURL;
-
             img.onload = function () {
-                // Calculate new width based on the aspect ratio
+                // get new dimensions
                 const imgAspectRatio = img.naturalWidth / img.naturalHeight;
                 const newWidth = height * imgAspectRatio;
-
-                // Update SVG dimensions
                 svg.attr("width", newWidth).attr("height", height);
 
-                // Add the image to the background
-                svg.selectAll("image").remove(); // Clear any existing image
+                // add image
+                svg.selectAll("image").remove();
                 svg.append("image")
                     .attr("xlink:href", imageURL)
                     .attr("x", 0)
                     .attr("y", 0)
                     .attr("width", newWidth)
                     .attr("height", height)
-                    .attr("style", "pointer-events: none;") // Make image non-interactive
-                    .lower(); // Ensure the image is behind the cells
+                    // prevent dragging the image becaucse it's annoying
+                    .attr("style", "pointer-events: none;")
+                    .lower();  // behind
 
-                // Redraw the Voronoi diagram to fit the new dimensions
+                // draw again in case we resized
                 drawVoronoi(points);
             };
         };
@@ -278,8 +218,6 @@ function overlayImage() {
         console.error("No file selected");
     }
 }
-
-
 
 /**
  * Main function, runs everything. (not much for now)
