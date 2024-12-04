@@ -3,6 +3,7 @@ layout: voronoi
 title: Voronoi Art Generator
 ---
 
+---
 
 ## How do I use this?
 

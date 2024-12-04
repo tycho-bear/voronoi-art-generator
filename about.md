@@ -24,6 +24,7 @@ This application provides a way for users to apply Voronoi diagrams in an artist
 
 ## Stretch goals:
 
+* Button to add a certain number of points
 * Random point movement
 
 [//]: # (I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.)
