@@ -39,11 +39,15 @@
     <main id="content" class="main-content" role="main">
 
       <!-- include the voronoi diagram -->
-      <svg id="voronoi-diagram" width="800" height="600"></svg>
+<!--      <svg id="voronoi-diagram" width="800" height="600"></svg>-->
+      <!-- center the thing -->
+      <div style="display: flex; justify-content: center; padding-bottom: 5px">
+        <svg id="voronoi-diagram" width="800" height="600"></svg>
+      </div>
       <script src="{{ site.baseurl }}/javascript/voronoi.js"></script>
 <!--      <script src="/javascript/voronoi.js"></script>-->
 
-      <br>
+<!--      <br>-->
 
 
       <!-- upload background image (v1) -->
@@ -52,7 +56,7 @@
 
 
       <!-- upload background image (v2) -->
-      <label>
+      <label style="padding-left: 15px">
         Add background image:
         <input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="overlayImage()">
       </label>
@@ -60,7 +64,7 @@
 
 
       <!-- button to toggle points -->
-      <label style="float: right; padding-right: 30px;">
+      <label style="float: right; padding-right: 15px;">
         <input type="checkbox" id="toggle-points" onchange="togglePoints()" checked>
 <!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Show points-->
         Show points

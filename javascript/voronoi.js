@@ -137,9 +137,15 @@ function togglePoints() {
  * @param points the array of points. Each point is in the form `[x, y]`.
  */
 function drawVoronoi(points) {
+
+    // todo documentation
+    const svgWidth = +svg.attr("width");
+    const svgHeight = +svg.attr("height");
+
     // create the delaunay triangulation and generate the voronoi diagram
     const delaunay = d3.Delaunay.from(points);
-    const voronoi = delaunay.voronoi([0, 0, width, height]);
+    // const voronoi = delaunay.voronoi([0, 0, width, height]);
+    const voronoi = delaunay.voronoi([0, 0, svgWidth, svgHeight]);
 
     // each point corresponds to a cell, so by giving each point a color, we
     // can color the cells.
@@ -186,44 +192,93 @@ function addPointOnClick(event) {
 
 // TODO
 
-// Function to overlay the uploaded image and make Voronoi cells transparent
+// // Function to overlay the uploaded image and make Voronoi cells transparent
+// function overlayImage() {
+//     imageUploaded = true
+//     const fileInput = document.getElementById("upload-image");
+//     const file = fileInput.files[0];
+//
+//     if (file) {
+//         const reader = new FileReader();
+//
+//         // When the file is loaded, set it as the background image
+//         reader.onload = function (event) {
+//             const imageURL = event.target.result;
+//
+//             // Add the image to the background
+//             svg.selectAll("image").remove(); // Clear any existing image
+//             svg.append("image")
+//                 .attr("xlink:href", imageURL)
+//                 .attr("x", 0)
+//                 .attr("y", 0)
+//                 .attr("width", width)
+//                 .attr("height", height)
+//                 // todo: just doing this works:
+//                 .attr("style", "pointer-events: none;") // Make image non-interactive
+//                 .lower(); // Ensure the image is behind the cells
+//
+//             // Update Voronoi cells to have transparent fill
+//             svg.selectAll(".voronoi-cell")
+//                 // .attr("fill", (_, i) => cellColors.get(i)) // Retain cell colors
+//                 // .attr("fill-opacity", 0); // Make cells transparent
+//                 .attr("fill", "none"); // Transparent cells
+//         };
+//
+//         // Read the file as a data URL
+//         reader.readAsDataURL(file);
+//     } else {
+//         console.error("No file selected");
+//     }
+// }
+
+
+// todo: this one resizes the diagram
+
 function overlayImage() {
-    imageUploaded = true
+    imageUploaded = true;
     const fileInput = document.getElementById("upload-image");
     const file = fileInput.files[0];
 
     if (file) {
         const reader = new FileReader();
 
-        // When the file is loaded, set it as the background image
         reader.onload = function (event) {
             const imageURL = event.target.result;
 
-            // Add the image to the background
-            svg.selectAll("image").remove(); // Clear any existing image
-            svg.append("image")
-                .attr("xlink:href", imageURL)
-                .attr("x", 0)
-                .attr("y", 0)
-                .attr("width", width)
-                .attr("height", height)
-                // todo: just doing this works:
-                .attr("style", "pointer-events: none;") // Make image non-interactive
-                .lower(); // Ensure the image is behind the cells
+            // Create an Image object to get dimensions
+            const img = new Image();
+            img.src = imageURL;
 
-            // Update Voronoi cells to have transparent fill
-            svg.selectAll(".voronoi-cell")
-                // .attr("fill", (_, i) => cellColors.get(i)) // Retain cell colors
-                // .attr("fill-opacity", 0); // Make cells transparent
-                .attr("fill", "none"); // Transparent cells
+            img.onload = function () {
+                // Calculate new width based on the aspect ratio
+                const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+                const newWidth = height * imgAspectRatio;
+
+                // Update SVG dimensions
+                svg.attr("width", newWidth).attr("height", height);
+
+                // Add the image to the background
+                svg.selectAll("image").remove(); // Clear any existing image
+                svg.append("image")
+                    .attr("xlink:href", imageURL)
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("width", newWidth)
+                    .attr("height", height)
+                    .attr("style", "pointer-events: none;") // Make image non-interactive
+                    .lower(); // Ensure the image is behind the cells
+
+                // Redraw the Voronoi diagram to fit the new dimensions
+                drawVoronoi(points);
+            };
         };
 
-        // Read the file as a data URL
         reader.readAsDataURL(file);
     } else {
         console.error("No file selected");
     }
 }
+
 
 
 /**
