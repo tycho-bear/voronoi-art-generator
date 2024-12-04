@@ -14,8 +14,8 @@ const height = 600;
  * The number of points to generate when the page is loaded.
  * @type {number}
  */
-// const numStartingPoints = 30
-const numStartingPoints = 500
+const numStartingPoints = 30
+// const numStartingPoints = 500
 
 /**
  * Maps the index of each cell to its color. This is used when points are added
@@ -207,10 +207,14 @@ function overlayImage() {
                 .attr("y", 0)
                 .attr("width", width)
                 .attr("height", height)
+                // todo: just doing this works:
+                .attr("style", "pointer-events: none;") // Make image non-interactive
                 .lower(); // Ensure the image is behind the cells
 
             // Update Voronoi cells to have transparent fill
             svg.selectAll(".voronoi-cell")
+                // .attr("fill", (_, i) => cellColors.get(i)) // Retain cell colors
+                // .attr("fill-opacity", 0); // Make cells transparent
                 .attr("fill", "none"); // Transparent cells
         };
 
