@@ -39,6 +39,12 @@ let pointsVisible = false;
  */
 let imageUploaded = false;
 
+/**
+ * Flag that indicates whether the stained glass effect is enabled.
+ * @type {boolean}
+ */
+let stainedGlassEffect = false;
+
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
@@ -170,6 +176,11 @@ function addPointOnClick(event) {
     const [x, y] = d3.pointer(event);
     points.push([x, y]);
     drawVoronoi(points);  // redraw
+
+    // todo stained glass effect global variable check here
+    if (stainedGlassEffect) {
+        applyStainedGlassEffect();
+    }
 }
 
 /**
@@ -218,6 +229,95 @@ function overlayImage() {
         console.error("No file selected");
     }
 }
+
+
+// TODO documentation
+// TODO put svgWidth and svgHeight in global scope
+function applyStainedGlassEffect() {
+    const canvas = document.getElementById("image-canvas");
+    const context = canvas.getContext("2d");
+
+    const img = document.querySelector("image");
+    if (!img) {
+        console.error("No background image found.");
+        return;
+    }
+
+    // Get SVG dimensions
+    const svgWidth = +svg.attr("width");
+    const svgHeight = +svg.attr("height");
+
+    // Set canvas dimensions to match SVG
+    canvas.width = svgWidth;
+    canvas.height = svgHeight;
+
+    // Draw the image onto the canvas
+    context.drawImage(img, 0, 0, svgWidth, svgHeight);
+
+    // Get image data
+    const imageData = context.getImageData(0, 0, svgWidth, svgHeight);
+    const { data } = imageData;
+
+    // Get Voronoi diagram data
+    const delaunay = d3.Delaunay.from(points);
+    const voronoi = delaunay.voronoi([0, 0, svgWidth, svgHeight]);
+
+    // Compute average color for each cell
+    svg.selectAll(".voronoi-cell")
+        .data(points)
+        .attr("fill", (_, i) => {
+            // Get cell path
+            const path = new Path2D(voronoi.renderCell(i));
+
+            // Collect pixels within the cell
+            let r = 0, g = 0, b = 0, count = 0;
+            for (let y = 0; y < svgHeight; y++) {
+                for (let x = 0; x < svgWidth; x++) {
+                    if (context.isPointInPath(path, x, y)) {
+                        const index = (y * svgWidth + x) * 4;
+                        r += data[index];
+                        g += data[index + 1];
+                        b += data[index + 2];
+                        count++;
+                    }
+                }
+            }
+
+            // Avoid division by zero
+            if (count === 0) return "rgba(0, 0, 0, 0)";
+
+            // Compute average color
+            r = Math.round(r / count);
+            g = Math.round(g / count);
+            b = Math.round(b / count);
+
+            return `rgb(${r}, ${g}, ${b})`;
+        });
+}
+
+
+
+
+// TODO documentation
+function toggleStainedGlassEffect() {
+
+    stainedGlassEffect = !stainedGlassEffect;
+
+    // const checkbox = document.getElementById("toggle-stained-glass");
+
+    // if (checkbox.checked) {
+    if (stainedGlassEffect) {
+        applyStainedGlassEffect();
+    } else {
+        // Revert cells to original colors
+        drawVoronoi(points);
+        // svg.selectAll(".voronoi-cell")
+        //     .data(points)
+        //     .attr("fill", (_, i) => cellColors.get(i)) // Restore original colors
+        //     .attr("fill-opacity", 1); // Reset opacity if it was changed
+    }
+}
+
 
 /**
  * Main function, runs everything. (not much for now)

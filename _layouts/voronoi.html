@@ -50,25 +50,37 @@
 <!--      <br>-->
 
 
-      <!-- upload background image (v1) -->
-<!--      <label for="image-upload">Add background image:</label>-->
-<!--      <input type="file" id="image-upload" accept="image/png, image/jpeg">-->
+      <!-- canvas so we can see the colors in the image -->
+      <canvas id="image-canvas" style="display: none;"></canvas>
+
+
+      <hr>
 
 
       <!-- upload background image (v2) -->
-      <label style="padding-left: 15px">
+<!--      <label style="padding-left: 15px">-->
+      <label>
         Add background image:
         <input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="overlayImage()">
       </label>
 
 
+      <!-- checkbox to toggle the stained glass effect -->
+      <label>
+        <input type="checkbox" id="toggle-stained-glass" onchange="toggleStainedGlassEffect()">
+        Stained Glass Effect
+      </label>
 
-      <!-- button to toggle points -->
-      <label style="float: right; padding-right: 15px;">
+
+      <!-- checkbox to toggle points -->
+<!--      <label style="float: right; padding-right: 15px;">-->
+      <label style="float: right;">
         <input type="checkbox" id="toggle-points" onchange="togglePoints()">  <!-- can add checked -->
 <!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Show points-->
         Show points
       </label>
+
+
 
 
       {{ content }}
