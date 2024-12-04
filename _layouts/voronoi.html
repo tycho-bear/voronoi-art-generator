@@ -46,10 +46,18 @@
       <br>
 
 
-<!--      <div>-->
-        <label for="image-upload">Add background image:</label>
-        <input type="file" id="image-upload" accept="image/png, image/jpeg">
-<!--      </div>-->
+      <!-- upload background image (v1) -->
+<!--      <label for="image-upload">Add background image:</label>-->
+<!--      <input type="file" id="image-upload" accept="image/png, image/jpeg">-->
+
+
+      <!-- upload background image (v2) -->
+      <label>
+        Add background image:
+        <input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="overlayImage()">
+      </label>
+
+
 
       <!-- button to toggle points -->
       <label style="float: right; padding-right: 30px;">

@@ -14,7 +14,8 @@ const height = 600;
  * The number of points to generate when the page is loaded.
  * @type {number}
  */
-const numStartingPoints = 30
+// const numStartingPoints = 30
+const numStartingPoints = 500
 
 /**
  * Maps the index of each cell to its color. This is used when points are added
@@ -28,7 +29,14 @@ const cellColors = new Map();
  * visible. This is read at page load, and updated when the checkbox is clicked.
  * @type {boolean}
  */
-let pointsVisible = true;
+// let pointsVisible = true;
+let pointsVisible = false;
+
+/**
+ * TODO
+ * @type {boolean}
+ */
+let imageUploaded = false;
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
@@ -96,6 +104,22 @@ function drawPoints(visible) {
         // .style("display", visible ? "block" : "none");
 }
 
+// function drawCells(transparent) {
+//     // draw the cells and the lines between them
+//     // use the fill color from earlier, and set the line color to black
+//     svg.selectAll("path")
+//         .data(points)
+//         .join("path")
+//         .attr("class", "voronoi-cell")
+//         .attr("d", (_, i) => voronoi.renderCell(i))
+//         .attr("stroke", "#000")
+//         // .attr("fill", (_, i) => cellColors.get(i)) // Use persistent color
+//         .attr("fill", (_, i) => transparent ? "none" : cellColors.get(i))
+//         // .attr("fill", (_, i) => "none")
+//         // increase line thickness
+//         .attr("stroke-width", 2)
+// }
+
 /**
  * Toggles the visibility of points on the diagram. It uses the pointsVisible
  * flag, which is initially set to true.
@@ -133,10 +157,14 @@ function drawVoronoi(points) {
         .attr("class", "voronoi-cell")
         .attr("d", (_, i) => voronoi.renderCell(i))
         .attr("stroke", "#000")
-        .attr("fill", (_, i) => cellColors.get(i)) // Use persistent color
+        // .attr("fill", (_, i) => cellColors.get(i)) // Use persistent color
+        // make cells transparent if an image has been uploaded
+        .attr("fill", (_, i) => imageUploaded ? "none" : cellColors.get(i))
+        // .attr("fill", (_, i) => "none")
         // increase line thickness
         .attr("stroke-width", 2)
         // .attr("stroke", "#5b4469");
+    // drawCells(imageUploaded)
 
     // draw the points here
     // drawPoints(true)
@@ -154,6 +182,45 @@ function addPointOnClick(event) {
     points.push([x, y]);
     drawVoronoi(points);  // redraw
 }
+
+
+// TODO
+
+// Function to overlay the uploaded image and make Voronoi cells transparent
+function overlayImage() {
+    imageUploaded = true
+    const fileInput = document.getElementById("upload-image");
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        // When the file is loaded, set it as the background image
+        reader.onload = function (event) {
+            const imageURL = event.target.result;
+
+            // Add the image to the background
+            svg.selectAll("image").remove(); // Clear any existing image
+            svg.append("image")
+                .attr("xlink:href", imageURL)
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", width)
+                .attr("height", height)
+                .lower(); // Ensure the image is behind the cells
+
+            // Update Voronoi cells to have transparent fill
+            svg.selectAll(".voronoi-cell")
+                .attr("fill", "none"); // Transparent cells
+        };
+
+        // Read the file as a data URL
+        reader.readAsDataURL(file);
+    } else {
+        console.error("No file selected");
+    }
+}
+
 
 /**
  * Main function, runs everything. (not much for now)
