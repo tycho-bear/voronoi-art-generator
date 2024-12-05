@@ -7,9 +7,10 @@ title: Voronoi Art Generator
 
 ## How do I use this?
 
-* Simply click on the diagram to add points to it!
+* Click on the diagram to add points to it!
 * To toggle point visibility, use the "show points" checkbox.
 * Upload an image to see the Voronoi diagram displayed over it. (Recommended: [this](https://imgur.com/a/bKCtgq3) or [this](https://imgur.com/a/S0JqgvO).)
+* After uploading an image, you can toggle a "stained glass" effect to fill each cell with the average color of the pixels within it.
 
 
 
