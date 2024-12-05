@@ -1,6 +1,3 @@
-<!--Customize this page to change the layout for the Voronoi page and include-->
-<!--javascript, etc. I also want to make sure this is the default landing page.-->
-
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
@@ -45,44 +42,34 @@
         <svg id="voronoi-diagram" width="800" height="600"></svg>
       </div>
       <script src="{{ site.baseurl }}/javascript/voronoi.js"></script>
-<!--      <script src="/javascript/voronoi.js"></script>-->
-
-<!--      <br>-->
-
 
       <!-- canvas so we can see the colors in the image -->
       <canvas id="image-canvas" style="display: none;"></canvas>
 
-
       <hr>
 
-
-      <!-- upload background image (v2) -->
-<!--      <label style="padding-left: 15px">-->
+      <!-- upload background image -->
       <label>
         Add background image:
         <input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="overlayImage()">
       </label>
 
-
       <!-- checkbox to toggle the stained glass effect -->
-      <label>
+      <label style="float: right;">
         <input type="checkbox" id="toggle-stained-glass" onchange="toggleStainedGlassEffect()">
-        Stained Glass Effect
+        Apply stained glass effect
       </label>
 
+      <br>
 
       <!-- checkbox to toggle points -->
-<!--      <label style="float: right; padding-right: 15px;">-->
       <label style="float: right;">
         <input type="checkbox" id="toggle-points" onchange="togglePoints()">  <!-- can add checked -->
-<!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Show points-->
         Show points
       </label>
 
-
-
-
+      <br>
+      
       {{ content }}
 
       <footer class="site-footer">

@@ -15,7 +15,24 @@ const height = 600;
  * @type {number}
  */
 // const numStartingPoints = 30
-const numStartingPoints = 500
+// const numStartingPoints = 50
+// const numStartingPoints = 100
+// const numStartingPoints = 250
+// const numStartingPoints = 500
+const numStartingPoints = 1000
+// const numStartingPoints = 1500
+// const numStartingPoints = 2000
+// const numStartingPoints = 3000
+// const numStartingPoints = 4000
+// const numStartingPoints = 5000
+
+/**
+ * The thickness of the lines.
+ * @type {number}
+ */
+// const lineThickness = 1;
+const lineThickness = 0;
+// const lineThickness = 0.1;
 
 /**
  * Maps the index of each cell to its color. This is used when points are added
@@ -158,7 +175,7 @@ function drawVoronoi(points) {
         .attr("fill", (_, i) => imageUploaded ? "none" : cellColors.get(i))
         // .attr("fill", (_, i) => "none")
         // increase line thickness
-        .attr("stroke-width", 2)
+        .attr("stroke-width", lineThickness)
         // .attr("stroke", "#5b4469");
 
     // draw the points here
@@ -230,45 +247,42 @@ function overlayImage() {
 }
 
 
-// TODO documentation
-// TODO put svgWidth and svgHeight in global scope?
+/**
+ * This function applies the stained glass effect to the Voronoi diagram. It
+ * does this by computing the average color of the image pixels within each
+ * cell, then setting the cell color to that average.
+ */
 function applyStainedGlassEffect() {
     const canvas = document.getElementById("image-canvas");
     const context = canvas.getContext("2d");
-
     const img = document.querySelector("image");
-    if (!img) {
+    if (!img) {  // make sure we don't try to do it without an image
         console.error("No background image found.");
         return;
     }
 
-    // Get SVG dimensions
+    // set dimensions
     const svgWidth = Math.round(+svg.attr("width"));
     const svgHeight = Math.round(+svg.attr("height"));
-
-    // Set canvas dimensions to match SVG (as integers)
     canvas.width = svgWidth;
     canvas.height = svgHeight;
 
-    // Draw the image onto the canvas
+    // put the image onto the canvas
+    // get data from the image
     context.drawImage(img, 0, 0, svgWidth, svgHeight);
-
-    // Get image data
     const imageData = context.getImageData(0, 0, svgWidth, svgHeight);
     const { data } = imageData;
 
-    // Get Voronoi diagram data
     const delaunay = d3.Delaunay.from(points);
     const voronoi = delaunay.voronoi([0, 0, svgWidth, svgHeight]);
 
-    // Compute average color for each cell
+    // color averaging
     svg.selectAll(".voronoi-cell")
         .data(points)
         .attr("fill", (_, i) => {
-            // Get cell path
             const path = new Path2D(voronoi.renderCell(i));
-
-            // Collect pixels within the cell
+            // check if each pixel is in the cell, and if it is, add the color
+            // to the running total
             let r = 0, g = 0, b = 0, count = 0;
             for (let y = 0; y < svgHeight; y++) {
                 for (let x = 0; x < svgWidth; x++) {
@@ -282,54 +296,32 @@ function applyStainedGlassEffect() {
                 }
             }
 
-            // Avoid division by zero (cells with no pixels)
+            // for empty cells
             if (count === 0) return "rgba(0, 0, 0, 0)";
 
-            // DEBUG
-            let rgbNumbersBeforeRounding = `rgb(${r}, ${g}, ${b})`;
-            console.log("before rounding: " + rgbNumbersBeforeRounding);  // NaN
-
-            // Compute average color
+            // // DEBUG
+            // let rgbNumbersBeforeRounding = `rgb(${r}, ${g}, ${b})`;
+            // console.log("before rounding: " + rgbNumbersBeforeRounding);  // NaN
             r = Math.round(r / count);
             g = Math.round(g / count);
             b = Math.round(b / count);
-            // r = 33;
-            // g = 66;
-            // b = 99;
 
-            // let rgbNumbers = `rgb(${r}, ${g}, ${b})`;
-            let rgbNumbers = `rgb(${r}, ${g}, ${b})`;  // NaN
-
-            // print the rgb value to the console
-            console.log(rgbNumbers);
-
-            return rgbNumbers;
+            return `rgb(${r}, ${g}, ${b})`;
         });
 }
 
-
-
-
-// TODO documentation
+/**
+ * Toggles the stained glass effect on the Voronoi diagram. This is called when
+ * the checkbox is clicked.
+ */
 function toggleStainedGlassEffect() {
-
     stainedGlassEffect = !stainedGlassEffect;
-
-    // const checkbox = document.getElementById("toggle-stained-glass");
-
-    // if (checkbox.checked) {
     if (stainedGlassEffect) {
         applyStainedGlassEffect();
     } else {
-        // Revert cells to original colors
-        drawVoronoi(points);
-        // svg.selectAll(".voronoi-cell")
-        //     .data(points)
-        //     .attr("fill", (_, i) => cellColors.get(i)) // Restore original colors
-        //     .attr("fill-opacity", 1); // Reset opacity if it was changed
+        drawVoronoi(points);  // go back to original
     }
 }
-
 
 /**
  * Main function, runs everything. (not much for now)
