@@ -31,6 +31,7 @@ This application provides a way for users to apply Voronoi diagrams in an artist
 * Toggle between preset numbers of points
 * Toggle lines on/off
 * Random point movement
+* More efficient way to calculate the color averages
 
 [//]: # (I’ll also make it so the points can move around in a random manner, or be overlaid on top of an image. My idea is to create something resembling a screensaver that can be pleasing to look at.)
 
