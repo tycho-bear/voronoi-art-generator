@@ -30,9 +30,12 @@ const numStartingPoints = 500
  * The thickness of the lines.
  * @type {number}
  */
+// const lineThickness = 2;
 // const lineThickness = 1;
 // const lineThickness = 0;
 const lineThickness = 0.1;
+// const lineThickness = 0.08;
+// const lineThickness = 0.05;
 
 /**
  * Maps the index of each cell to its color. This is used when points are added
