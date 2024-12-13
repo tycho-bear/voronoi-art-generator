@@ -1,10 +1,9 @@
 # Voronoi
 
+The website can be found here: https://tycho-bear.github.io/voronoi/
 
 
-
-
-### Some References
+### Some references
 
 1. Cayman theme files downloaded from here: https://pages-themes.github.io/cayman/ 
 
