@@ -65,7 +65,7 @@ My general algorithm is as follows:
 4. Users may choose to upload a background image for the diagram. When this happens, all of the Voronoi cells become transparent so that the image can be seen.
 5. After an image has been uploaded, users may choose to apply a "stained glass" effect, or color averaging algorithm, which fills each cell with the average colors of the image pixels contained within that cell.
 
-#### Color averaging algorithm
+### Color averaging algorithm
 
 The colors of each individual cell are averaged as follows:
 
