@@ -17,8 +17,8 @@ const height = 600;
 // const numStartingPoints = 30
 // const numStartingPoints = 50
 // const numStartingPoints = 100
-// const numStartingPoints = 250
-const numStartingPoints = 500
+const numStartingPoints = 250
+// const numStartingPoints = 500
 // const numStartingPoints = 1000
 // const numStartingPoints = 1500
 // const numStartingPoints = 2000
@@ -30,10 +30,10 @@ const numStartingPoints = 500
  * The thickness of the lines.
  * @type {number}
  */
-// const lineThickness = 2;
+const lineThickness = 2;
 // const lineThickness = 1;
 // const lineThickness = 0;
-const lineThickness = 0.1;
+// const lineThickness = 0.1;
 // const lineThickness = 0.08;
 // const lineThickness = 0.05;
 
