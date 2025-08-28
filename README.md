@@ -12,13 +12,13 @@ The application also supports overlaying Voronoi diagrams on images and applying
 
 To try out this project, navigate to the website:
 
-https://tycho-bear.github.io/voronoi/
+https://tycho-bear.github.io/voronoi-art-generator/
 
-More detailed information, explanations, and example images may be found on the ["about this project"](https://tycho-bear.github.io/voronoi/about) page of the website.
+More detailed information, explanations, and example images may be found on the ["about this project"](https://tycho-bear.github.io/voronoi-art-generator/about) page of the website.
 
 
 
-### Some references
+## Some references
 
 1. Cayman theme files downloaded from here: https://pages-themes.github.io/cayman/ 
 
