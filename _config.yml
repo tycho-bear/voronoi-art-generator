@@ -17,7 +17,8 @@ theme: jekyll-theme-cayman
 # serve with an empty string for the baseurl
 # this means that if I use the baseurl in links, everything still works locally,
   # and the github pages deployment should actually be able to use the javascript!
-baseurl: /voronoi
+#baseurl: /voronoi
+baseurl: /voronoi-art-generator
 
 github:
   is_project_page: true
