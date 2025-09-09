@@ -16,7 +16,15 @@ https://tycho-bear.github.io/voronoi-art-generator/
 
 More detailed information, explanations, and example images may be found on the ["about this project"](https://tycho-bear.github.io/voronoi-art-generator/about) page of the website.
 
+## Docker
 
+This project may also be run locally inside a Docker container. To do this, clone the repository, navigate to its directory, and run the following command:
+
+```bash
+make start
+```
+
+This will build the Docker image and run it. Navigate to [http://0.0.0.0:4000/](http://0.0.0.0:4000/) to see the webpage.
 
 ## Some references
 
