@@ -20,7 +20,8 @@
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
 
 <!--      link back to the main page-->
-      <a href="{{ site.url }}{{ site.baseurl }}" class="btn">Voronoi Art Generator</a>
+<!--      <a href="{{ site.url }}{{ site.baseurl }}" class="btn">Voronoi Art Generator</a>-->
+      <a href="{{ '/' | relative_url }}" class="btn">Voronoi Art Generator</a>
 
       <!-- github -->
       {% if site.github.is_project_page %}
