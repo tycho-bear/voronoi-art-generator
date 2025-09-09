@@ -4,9 +4,9 @@
 ## Overview
 
 This project is a web application that allows users to apply [Voronoi diagrams](https://en.wikipedia.org/wiki/Voronoi_diagram)
-in an artistic manner. The goal is to create a visually pleasing representation of an input image. Users can click on the canvas to create points, and this will generate edges and partition the plane into different regions.
+in an artistic manner. Users can click on the canvas to create points, and this will generate edges and partition the plane into different regions. 
 
-The application also supports overlaying Voronoi diagrams on images and applying a "stained glass" effect to fill each cell with the average color of the pixels within it.
+The application also supports overlaying Voronoi diagrams on images and applying a "stained glass" effect that fills each cell with the average color of the pixels within it. The goal is to create a visually pleasing representation of the input image. 
 
 ## Website
 
@@ -25,6 +25,8 @@ make start
 ```
 
 This will build the Docker image and run it. Navigate to [http://0.0.0.0:4000/](http://0.0.0.0:4000/) to see the webpage.
+
+If you are running this from inside Docker Desktop, you may need to specify the port (4000) when you run the image.
 
 ## Some references
 
